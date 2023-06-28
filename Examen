@@ -1,0 +1,215 @@
+create table pepe(
+id number(10),
+nombre char(50) not null,
+precio number(4) not null,
+num_tipo number(10),
+num_mar number(10) not null
+);
+drop table pepe;
+select*from pepe;
+
+insert into pepe values (1,'Bimbuñuelos',20,4,1);
+insert into pepe values (2,'Donas azucaradas',18,1,1);
+insert into pepe values (3,'Nito',15,1,1);
+insert into pepe values (4,'Donitas espolvoreadas',21,1,1);
+insert into pepe values (5,'Roles de canela',24,1,1);
+insert into pepe values (6,'Roles con glaceado',26,1,1);
+insert into pepe values (7,'Crossantines choco',12,1,1);
+insert into pepe values (8,'Panque de nuez',38,1,1);
+insert into pepe values (9,'Panque de pasas',35,1,1);
+insert into pepe values (10,'Mantecadas',25,1,1);
+insert into pepe values (11,'Pinguinos',20,1,2);
+insert into pepe values (12,'Rebanadas',12,4,1);
+insert into pepe values (13,'Boing guayaba 1L',27,3,3);
+insert into pepe values (14,'Boing manzanaa 1L',27,3,3);
+insert into pepe values (15,'Boing uva 1L',27,3,3);
+insert into pepe values (16,'Boing mango 1L',27,3,3);
+insert into pepe values (17,'Boing guayaba 1/2L',17,3,3);
+insert into pepe values (18,'Boing manzana 1/2L',17,3,3);
+insert into pepe values (19,'Boing uva 1/2L',17,3,3);
+insert into pepe values (20,'Boing mango 1/2L',17,3,3);
+insert into pepe values (21,'Barritas piña',15,4,2);
+insert into pepe values (22,'Barritas fresa',15,4,2);
+insert into pepe values (23,'Polvorones',20,4,2);
+insert into pepe values (24,'Principe',20,4,2);
+insert into pepe values (25,'Chocorrol',22,1,2);
+insert into pepe values (26,'Canelitas',20,4,2);
+insert into pepe values (27,'Trikitrakes',18,4,2);
+insert into pepe values (28,'Mini roco',5,1,2);
+insert into pepe values (29,'Dalmata',12,1,2);
+insert into pepe values (30,'Napolitano',22,1,2);
+insert into pepe values (31,'Sponch',22,4,2);
+insert into pepe values (32,'Emperador de chocolate',20,4,2);
+insert into pepe values (33,'Chocotorro',15,1,2);
+insert into pepe values (34,'Emperador de vainilla',20,4,2);
+insert into pepe values (35,'Emperador de avellana',20,4,2);
+insert into pepe values (36,'Sabritas naturales',18,2,4);
+insert into pepe values (37,'Sabritas adovadas',18,2,4);
+insert into pepe values (38,'Sabritas Receta Crujiente',18,2,4);
+insert into pepe values (39,'Doritos incognita',18,2,4);
+insert into pepe values (40,'Fritos Chipotle',17,2,4);
+insert into pepe values (41,'Doritos Flamint Hot',18,2,4);
+insert into pepe values (42,'Chetos Flamint Hot',15,2,4);
+insert into pepe values (43,'Cacahuate Mafer',23,2,4);
+insert into pepe values (44,'Rufles original',18,2,4);
+insert into pepe values (45,'Rufles queso',18,2,4);
+insert into pepe values (46,'Rancheritos',17,2,4);
+insert into pepe values (47,'Doritos Nachos',19,2,4);
+insert into pepe values (48,'Churrumais',15,2,4);
+insert into pepe values (49,'Chetos torciditos',17,2,4);
+insert into pepe values (50,'Paketaxo Flamint Hot',25,2,4);
+insert into pepe values (51,'Paketaxo Queso',25,2,4);
+insert into pepe values (52,'Doritos diablo',18,2,4);
+insert into pepe values (53,'Crujitos',17,2,4);
+insert into pepe values (54,'Chetos Bolita',15,2,4);
+insert into pepe values (55,'Chetos de queso',17,2,4);
+insert into pepe values (56,'Doritos Pizza',18,2,4);
+insert into pepe values (57,'Chetos de colmillo',18,2,4);
+insert into pepe values (58,'Takis fuego',18,2,4);
+insert into pepe values (59,'Takis guacamole',18,2,4);
+insert into pepe values (60,'Cacahuates',15,2,4);
+insert into pepe values (61,'Sabritas Jalapeño',18,2,4);
+insert into pepe values (62,'Sabritas Habanero',18,2,4);
+insert into pepe values (63,'Doritos dinamita',18,2,4);
+insert into pepe values (64,'Yoplait fresa',15,5,5);
+insert into pepe values (65,'Yoplait durazno',15,5,5);
+insert into pepe values (66,'Yoplait natural',15,5,5);
+insert into pepe values (67,'Flan',18,5,5);
+insert into pepe values (68,'Arroz con leche',18,5,5);
+insert into pepe values (69,'Yoplait choco pay',20,5,5);
+insert into pepe values (70,'Yoplait Placer',17,5,5);
+insert into pepe values (71,'Yoplait Max Protein',18,5,5);
+insert into pepe values (72,'Yoplait Licuado',18,5,5);
+insert into pepe values (73,'Yoplait griego fresa',15,5,5);
+insert into pepe values (74,'Yoplait almond',15,5,5);
+insert into pepe values (75,'Yoplait fresa fribra',15,5,5);
+
+
+/*tabla 2*/
+create table t2(     
+id number(10),
+tipo nvarchar2(50)
+);
+
+select * from t2;
+drop table t2;
+
+create table pepito( 
+id number(10),
+marca nvarchar2(30) not null
+);
+drop table pepito;
+
+create sequence sec_inc1
+start with 1
+increment by 1
+maxvalue 500
+minvalue 0;
+
+create sequence sec_inc2
+start with 1
+increment by 1
+maxvalue 500
+minvalue 0;
+
+
+create or replace trigger tr_incrr
+before insert
+on pepe
+for each row
+begin
+if: new.num_mar = 1 then
+    insert into pepito values(sec_inc1.nextval,'bimbo');
+    end if;
+if: new.num_mar = 2 then
+    insert into pepito values(sec_inc1.nextval,'marinela');
+    end if;
+if: new.num_mar = 3 then
+    insert into pepito values(sec_inc1.nextval,'boing');
+    end if;
+if: new.num_mar = 4 then
+    insert into pepito values(sec_inc1.nextval,'sabritas');
+    end if;
+if: new.num_mar = 5 then
+    insert into pepito values(sec_inc1.nextval,'yoplait');
+    end if;
+    end;
+    
+    create or replace trigger tr_inc
+before insert
+on pepe
+for each row
+begin
+if: new.num_tipo = 1 then
+    insert into t2 values(sec_inc2.nextval,'pan');
+    end if;
+if: new.num_tipo = 2 then
+    insert into t2 values(sec_inc2.nextval,'frituras');
+    end if;
+if: new.num_tipo = 3 then
+    insert into t2 values(sec_inc2.nextval,'bebidas');
+    end if;
+if: new.num_tipo = 4 then
+    insert into t2 values(sec_inc2.nextval,'galletas');
+    end if;
+if: new.num_tipo = 5 then
+    insert into t2 values(sec_inc2.nextval,'yogurt');
+    end if;
+    end;
+    
+select * from pepe;
+truncate table pepe;
+select * from t2;
+truncate table t2;
+select * from pepito;
+truncate table pepito;
+
+insert into t2 values(76,'alcohol');
+insert into t2 values(77,'planta');
+insert into t2 values(78,'madera');
+insert into t2 values(79,'colchon');
+insert into t2 values(80,'camarones');
+
+insert into pepito values(76,'bacacho');
+insert into pepito values(77,'pera');
+insert into pepito values(78,'olivo');
+insert into pepito values(79,'restonic');
+insert into pepito values(80,'el mar');
+
+select pepe.nombre, pepe.precio, t2.tipo, pepito.marca from t2 full join pepito on t2.id=pepito.id full join pepe on pepe.id=pepito.id;
+
+select pepe.nombre, pepito.marca from pepe inner join pepito on pepe.id=pepito.id where pepito.marca='sabritas';
+
+select * from pepe left join t2 on pepe.id=t2.id where t2.id is null;
+
+select * from pepe right join pepito on pepe.id=pepito.id where pepe.id is not null;
+
+select * from pepe full join t2 on pepe.id=t2.id full join pepito on pepe.id=pepito.id where pepe.id is null or t2.id is null;
+
+select * from pepe inner join t2 on pepe.id=t2.id inner join pepito on pepe.id=pepito.id where pepe.nombre like 't%' or pepe.nombre like 'T%';
+
+
+
+create table pepote(
+texto nvarchar2(150)
+);
+
+drop table pepote;
+
+create or replace trigger tr_vitamina
+before insert 
+on pepe
+for each row when(new.nombre like 't%')
+begin
+    insert into pepote values('Se inserto un producto con la vitamina T ' ||:new.nombre);
+    end tr_vitamina;
+
+select * from pepote;
+select * from pepe;
+
+insert into pepe values(90,'ti',30,87,87);
+
+create view vi_viv as
+select pepe.nombre, pepe.precio, t2.tipo from pepe inner join t2 on pepe.id=t2.id;
+
+select * from vi_viv;
